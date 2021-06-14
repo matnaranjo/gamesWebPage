@@ -136,7 +136,7 @@ function game() {
 function keyPush(evt) {
     switch(evt.keyCode) {
         case 37:
-            if (dir!=3){
+            if (dir!=3 && dir!=0){
                 dir = 1;
                 xv=-1;yv=0;
             }

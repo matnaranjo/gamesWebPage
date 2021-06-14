@@ -4,16 +4,29 @@ body{
 div[id=canvassnake]{
     height: 552px;
     width: 500px;
-    display: block;
     margin-right: auto;
     margin-left: auto;
     right: 50%;
     left: 50%;
     border: solid 20px #5c547c;
 }
+
+div[id=barratexto]{
+    height: 50px;
+    width: 500px;
+    display: flex;
+    border:solid 1px black;
+    background-color: #9dc805;
+}
+#barratexto>*{
+    flex-basis: 100%;
+}
+div[id=opciones]{
+    text-align: left;
+    background-color: #9dc805;
+}
 div[id=marcador]{
-    width:500px;
-    height:50px;
+
     text-align: right;
     background-color: #9dc805;
     font-family: MS UI Gothic;
