@@ -16,5 +16,7 @@ div[id=marcador]{
     height:50px;
     text-align: right;
     background-color: #9dc805;
-
+    font-family: MS UI Gothic;
+    font-size: 2em;
+    color:#001600;
 }

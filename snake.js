@@ -28,6 +28,9 @@ init=5;
 //longitud
 long=init;
 
+// Puntuacion
+punt = 0;
+
 
 
 
@@ -49,6 +52,7 @@ function game() {
         ax= (Math.floor(Math.random()*24))*20;
         ay= (Math.floor(Math.random()*24))*20;
         long++;
+        punt++;
     }
 
     let food = new Path2D();
@@ -108,6 +112,7 @@ function game() {
         tamay=[];
         xv=yv=0;
         ax=240; ay=240;
+        punt=0;
     }
 
     // Si la serpiente choca con ella misma
@@ -120,9 +125,11 @@ function game() {
             tamay=[];
             xv=yv=0;
             ax=240; ay=240;
+            punt=0;
             break;
         }
 
+    document.querySelector("#marcador").innerHTML=punt;
 }
 
 
