@@ -20,8 +20,8 @@ long=init;
 punt = 0;
 // velocidad
 velocidad=16;
-
-testeo = 0;
+//intervalo
+var snakespeed = setInterval(game, 1000/16);
 
 function incremento(){
     if (velocidad <30){
@@ -55,7 +55,8 @@ window.onload=function (){
 }
 
 function inicio(){
-    setInterval(game, 1000/velocidad);
+    clearInterval(snakespeed)
+    snakespeed = setInterval(game, 1000/velocidad);
 }
 
     
