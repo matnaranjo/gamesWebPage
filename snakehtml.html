@@ -12,10 +12,21 @@
 
 
     <div id="canvassnake">
+        <div class="margen"></div>
         <div id="barratexto">
-            <div id="opciones"></div>
-            <div id="marcador"></div>
+            <div id="opciones">  
+                <div id="texto"><b>Velocidad:</b></div>
+                <button type="button" onclick="decremento()">&#9660;</button>
+                <div id="velocidad">08</div>
+                <button type="button" onclick="incremento()">&#9650;</button>
+
+            </div>
+            <div >
+                <button type="button" id="start" onclick="inicio()"><b>START</b></button>
+                <div id="marcador">0</div>
+            </div>
         </div>
+        <div class="margen"></div>
         <canvas id="snakecanvas" width="500" height="500" style="border:solid 1px black" ></canvas>
     </div>
 

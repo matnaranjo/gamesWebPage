@@ -1,39 +1,64 @@
-window.onload= function(){
-    canv = document.getElementById("snakecanvas");
-    ctx = canv.getContext("2d");
-    document.addEventListener("keydown",keyPush);
-    setInterval(game, 1000/10);
-}
-
 // direccion en X y Y 
 xv=yv=0;
 // direccion actual
 dir = 0;
 // posicion inicial serpiente
-px=200; py=480;
-
+px=240; py=480;
 // posicion inicial alimento
 ax=240; ay=240;
-
 // tamaño del paso
 sstep=20;
 sstep2=sstep-1;
-
 //vector tamaño de la serpiente
 tamax=[];
 tamay=[];
 //Tamaño inicial
 init=5;
-
 //longitud
 long=init;
-
 // Puntuacion
 punt = 0;
+// velocidad
+velocidad=16;
 
+testeo = 0;
 
+function incremento(){
+    if (velocidad <30){
+        velocidad+=2;
+    }
+    if ((velocidad/2)<10){
+        document.querySelector("#velocidad").innerHTML= "0" + velocidad/2;
+    }
+    if ((velocidad/2)>=10){
+        document.querySelector("#velocidad").innerHTML=velocidad/2;
+    }
+}
 
+function decremento(){
+    if (velocidad >2){
+        velocidad-=2;
+    }
+    if ((velocidad/2)<10){
+        document.querySelector("#velocidad").innerHTML= "0" + velocidad/2;
+    }
+    if ((velocidad/2)>=10){
+        document.querySelector("#velocidad").innerHTML=velocidad/2;
+    }
+}
 
+window.onload=function (){
+    canv = document.getElementById("snakecanvas");
+    ctx = canv.getContext("2d");
+    document.addEventListener("keydown",keyPush);
+    
+}
+
+function inicio(){
+    setInterval(game, 1000/velocidad);
+}
+
+    
 
 function game() {
 
@@ -42,7 +67,6 @@ function game() {
     ctx.fillRect(0,0,canv.width,canv.height);
 
     // crea el alimento en pos inicial 
-    
     if (long==init){
         ax=240; ay=240;
     }
@@ -54,7 +78,6 @@ function game() {
         long++;
         punt++;
     }
-
     let food = new Path2D();
     food.lineTo(ax,(ay+(sstep2/2)));
     food.lineTo((ax+(sstep2/2)),(ay+sstep2));
@@ -63,7 +86,6 @@ function game() {
     food.closePath();
     ctx.fillStyle="#001600";
     ctx.fill(food)
-    
         
     // Crea el elemento en la posicion inicial 
     if (dir == 0){
@@ -76,7 +98,6 @@ function game() {
             ctx.fillRect(tamax[k],tamay[k],sstep-1,sstep-1);
         }
     }
-   
 
     // movimiento de la serpiente
     if (dir!=0){
@@ -129,9 +150,8 @@ function game() {
             break;
         }
 
-    document.querySelector("#marcador").innerHTML=punt;
+    document.querySelector("#marcador").innerHTML=punt;    
 }
-
 
 function keyPush(evt) {
     switch(evt.keyCode) {
@@ -161,9 +181,3 @@ function keyPush(evt) {
             break;
     }
 }
-
-
-
-
-
-
