@@ -23,6 +23,7 @@ velocidad=16;
 //intervalo
 var snakespeed = setInterval(game, 1000/16);
 
+// Contro de velocidad de la serpiente, incremento de velocidad
 function incremento(){
     if (velocidad <30){
         velocidad+=2;
@@ -35,6 +36,7 @@ function incremento(){
     }
 }
 
+// Control de velocidad de la serpiente, incremento de velocidad
 function decremento(){
     if (velocidad >2){
         velocidad-=2;
@@ -47,6 +49,7 @@ function decremento(){
     }
 }
 
+// Carga inicial de elementos 
 window.onload=function (){
     canv = document.getElementById("snakecanvas");
     ctx = canv.getContext("2d");
@@ -54,6 +57,7 @@ window.onload=function (){
     
 }
 
+//Inicio del juego 
 function inicio(){
     clearInterval(snakespeed)
     snakespeed = setInterval(game, 1000/velocidad);
