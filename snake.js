@@ -78,10 +78,7 @@ function game() {
 
     // serpiente consume comida
     if (tamax[long-1]==ax && tamay[long-1]==ay){
-        ax= (Math.floor(Math.random()*24))*20;
-        ay= (Math.floor(Math.random()*24))*20;
-        long++;
-        punt++;
+        get_food()
     }
     let food = new Path2D();
     food.lineTo(ax,(ay+(sstep2/2)));
@@ -156,6 +153,14 @@ function game() {
         }
 
     document.querySelector("#marcador").innerHTML=punt;    
+}
+
+// Funcion de serpiente capturando comida
+function get_food(){
+    ax= (Math.floor(Math.random()*24))*20;
+    ay= (Math.floor(Math.random()*24))*20;
+    long++;
+    punt++;
 }
 
 function keyPush(evt) {
