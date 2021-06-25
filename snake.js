@@ -68,7 +68,7 @@ function inicio(){
 function game() {
 
     // Da color a todo el canvas para cada repeticion
-    ctx.fillStyle="#9dc805";
+    ctx.fillStyle="#989325";
     ctx.fillRect(0,0,canv.width,canv.height);
 
     // crea el alimento en pos inicial 
@@ -86,7 +86,7 @@ function game() {
     food.lineTo((ax+(sstep2)),(ay+(sstep2/2)));
     food.lineTo((ax+(sstep2/2)),ay);
     food.closePath();
-    ctx.fillStyle="#001600";
+    ctx.fillStyle="#352c1b";
     ctx.fill(food)
         
     // Crea el elemento en la posicion inicial 
@@ -96,7 +96,7 @@ function game() {
             tamay[j] =(py);
         }
         for (var k=0; k<long;k++){
-            ctx.fillStyle="#001600";
+            ctx.fillStyle="#352c1b";
             ctx.fillRect(tamax[k],tamay[k],sstep-1,sstep-1);
         }
     }
@@ -121,7 +121,7 @@ function game() {
         console.log(xv,yv)
         console.log(tamax, tamay)
         for (var i=0; i<long;i++){
-            ctx.fillStyle="#001600";
+            ctx.fillStyle="#352c1b";
             ctx.fillRect(tamax[i],tamay[i],sstep-1,sstep-1);
         }
     }
