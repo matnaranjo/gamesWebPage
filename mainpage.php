@@ -1,19 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="./mainpage.css">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Index</title>
 </head>
 <body>
-
-    
     <!-- Log in and register account buttons div -->
     <div id="user">
-        <button class="button" onclick="register()" id="regisbut">register</button>
-        <button class="button" onclick="log_in()" id="logbut">log in</button>
+        <button class="button" id="regisbut" onclick="register()" >register</button>
+        <button class="button" id="logbut" onclick="log_in()" >log in</button>
     </div>
 
     <!-- games options -->
@@ -35,14 +34,14 @@
         <div class="close"  onclick="log_in_close()">
             X
         </div>
-        <form action="">
+        <form method="post">
             <div class="usertext">
-                <input id="username"type="text" placeholder="Username" name="log_user">
+                <input class="username" id="logUsername" name="log_user" placeholder="Username" type="text"  >
             </div>
             <div class="usertext">
-                <input type="password" placeholder="Password" name="log_password">
+                <input id="logPassword" name="log_password" placeholder="Password" type="password" >
             </div>
-            <input class="pop_button" id="next" type="submit" value="next" name="next"></button>  
+            <input class="pop_button" id="next" name="next" type="button" value="next" > 
         </form>
     </div>
 
@@ -51,17 +50,17 @@
         <div class="close" onclick="register_close()" >
             X
         </div>
-        <form action="reg.php" method="POST">
+        <form id="registerNewUser" method="post">
             <div class="usertext">
-                <input id="username"type="text" placeholder="Username" name="reg_username">
+                <input class="username" id="regUsername" name="reg_username" placeholder="Username" type="text" >
             </div>
             <div class="usertext">
-                <input type="password" placeholder="Password" name="reg_password">
+                <input id="regPassword" name="reg_password" placeholder="Password" type="password">
             </div>
             <div class="usertext">
-                <input type="password" placeholder="Confirm password" name="reg_password_conf">
+                <input id="regPasswordConf" name="reg_password_conf" placeholder="Confirm password" type="password">
             </div>
-            <input class="pop_button" id="submit" type="submit" value="create" name="create"></button>  
+            <input class="pop_button" id="submit" name="create" type="submit"  value="create" > 
         </form>
     </div>
 
@@ -85,6 +84,8 @@
             reg.style.display="none"
         }
     </script> 
- 
+
+    <script src="./registration.js"></script>
+    <script src="./login.js"></script>
 </body>
 </html>
