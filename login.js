@@ -2,6 +2,7 @@ $(document).ready(function() {
 	$('#next').on('click', function() {
 		var username = $('#logUsername').val();
 		var password = $('#logPassword').val();
+		var gamesAvailable = document.getElementById("game_options");
 
 		if(username!="" && password!=""){
 			$.ajax({
@@ -14,7 +15,9 @@ $(document).ready(function() {
 				success: function(dataResult){
 					var dataResult = JSON.parse(dataResult);
 					if(dataResult.passwordResponse==password){
-						alert(dataResult.passwordResponse);						
+						alert("too good");	
+						gamesAvailable.style.display("flex");
+								
 					}
 					else if(dataResult.passwordResponse!=password){
 					   alert("Error occured !");

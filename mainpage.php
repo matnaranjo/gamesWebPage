@@ -15,19 +15,6 @@
         <button class="button" id="logbut" onclick="log_in()" >log in</button>
     </div>
 
-    <!-- games options -->
-
-
-    <div id="game_options">
-        <div class="options" id="snake_options">
-        </div>
-
-        <div class="options" id="space_options">
-        </div>
-
-        <div class="options" id="tetris_options">
-        </div>
-    </div>
 
     <!-- Log in div  -->
     <div id="access">
@@ -41,7 +28,7 @@
             <div class="usertext">
                 <input id="logPassword" name="log_password" placeholder="Password" type="password" >
             </div>
-            <input class="pop_button" id="next" name="next" type="button" value="next" > 
+            <input class="pop_button" id="next" name="next" type="submit" value="next" > 
         </form>
     </div>
 
@@ -68,6 +55,7 @@
     <script>
         var access = document.getElementById("access");
         var reg = document.getElementById("registration");
+
         function log_in(){
             reg.style.display="none"
             access.style.display="block";
