@@ -2,6 +2,7 @@
 <html>
 <head>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="./background_animation.js"></script>
     <link rel="stylesheet" href="./mainpage.css">
     <meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,13 +10,13 @@
 	<title>Index</title>
 </head>
 <body>
+    <!-- canvas for backgoround -->
+    <canvas id="background_animation"></canvas>
     <!-- Log in and register account buttons div -->
     <div id="user">
         <button class="button" id="regisbut" onclick="register()" >register</button>
         <button class="button" id="logbut" onclick="log_in()" >log in</button>
     </div>
-
-
     <!-- Log in div  -->
     <div id="access">
         <div class="close"  onclick="log_in_close()">
@@ -31,7 +32,6 @@
             <input class="pop_button" id="next" name="next" type="submit" value="next" > 
         </form>
     </div>
-
     <!-- Register div -->
     <div id="registration">
         <div class="close" onclick="register_close()" >
@@ -50,6 +50,7 @@
             <input class="pop_button" id="submit" name="create" type="submit"  value="create" > 
         </form>
     </div>
+
 
     <!-- Javascript code for pop-ups -->
     <script>
