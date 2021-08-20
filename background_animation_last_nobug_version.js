@@ -746,5 +746,3 @@ function shoot(evt){
             break;
     }
 }
-
-
