@@ -1157,20 +1157,19 @@ function character_reset(){
     alienkiller.reset(xalienkiller, yalienkiller);
 }
 function tankMovement(evt){
-    switch (evt.keyCode) {
-        case 37:
-            if (xalienkiller>35){
-                xalienkiller-=10;
-            }
-            break;
-    
-        case 39:
-            if (xalienkiller<1230){
-                xalienkiller+=10;
-            }
-        
-            break;
-
+    if (alienkiller.alive==0){
+        switch (evt.keyCode) {
+            case 37:
+                if (xalienkiller>35){
+                    xalienkiller-=10;
+                }
+                break;
+            case 39:
+                if (xalienkiller<1230){
+                    xalienkiller+=10;
+                }
+                break;
+        }
     }
 }
 function shoot(evt){
