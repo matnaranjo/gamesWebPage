@@ -74,14 +74,27 @@ class alienboss{
 
     }
 }
-
 class alien1 {
     constructor(x,y){
         this.x=x;
         this.y=y;
         this.alive = 1;
         this.explotion_timer=0;
-
+        this.shooting_confirmation;
+        this.shooted=0;
+        this.alien_bullet_speed=0;
+        this.bullet_y=this.y+40;
+        this.bullet_x=0;
+    }
+    reset(x,y){
+        this.x=x;
+        this.y=y;
+        this.alive = 1;
+        this.explotion_timer=0;
+        this.shooted=0;
+        this.alien_bullet_speed=0;
+        this.bullet_y=this.y+40;
+        this.bullet_x=0;
     }
     draw(Xpos, animation){
         if (this.alive==1){
@@ -148,14 +161,81 @@ class alien1 {
             this.explotion_timer++;
         }
     }
-}
+    shoot(){
+        if (this.alive==1 && this.shooted==0){  
+            if (this.shooted==0){
+                this. shooting_confirmation = Math.floor(Math.random() * 70);
+                if (this.shooting_confirmation==10){
+                    this.shooted=1;
+                }
+            }
+            if (this.shooted==1){
+                let  bulletXpos = 0;
+                let bulletYPos = 0;
+                let imageheight = 15;
+                let imagewidth = 8;
+                this.bullet_x = this.x;
+                const sprites = new Image();
+                sprites.src = "./sprites/shoots/alien_shoot1.png";
+                ctx.drawImage(sprites, bulletXpos, bulletYPos, 5, 10, this.bullet_x+21, this.bullet_y,imagewidth, imageheight);
+            }
+        }
+    }
+    bullet_movement(){
+        if (this.shooted==1){
+            let  bulletXpos = 0;
+            let bulletYPos = 0;
+            let imageheight = 15;
+            let imagewidth = 8;
+            this.alien_bullet_speed++;
+            const sprites = new Image();
+            sprites.src = "./sprites/shoots/alien_shoot1.png";
+            ctx.drawImage(sprites, bulletXpos, bulletYPos, 5, 10, this.bullet_x+21, this.bullet_y,imagewidth, imageheight);
 
+            if (this.alien_bullet_speed==4){
+                this.bullet_y+=3;
+                this.alien_bullet_speed=0;
+            }
+
+            if (this.bullet_y>850){
+                this.shooted=0;
+            }
+        }
+    }
+    bullet_touches_tank(tankx){
+        let hit = 0;
+        if (this.shooted==1){
+            let tanky = 800;
+            if ((tankx < this.bullet_x+21)&&(tankx+65 > this.bullet_x+29) && (tanky<this.bullet_y)&&(tanky+25>this.bullet_y+15)){
+                this.shooted=0;
+                hit = 1;
+            }
+        }
+        return hit;
+    }
+}
 class alien2 {
     constructor(x,y){
         this.x=x;
         this.y=y;
         this.alive = 1;
         this.explotion_timer=0;
+        this.shooting_confirmation;
+        this.shooted=0;
+        this.alien_bullet_speed=0;
+        this.bullet_y=this.y+40;
+        this.bullet_x=0;
+    }
+
+    reset(x,y){
+        this.x=x;
+        this.y=y;
+        this.alive = 1;
+        this.explotion_timer=0;
+        this.shooted=0;
+        this.alien_bullet_speed=0;
+        this.bullet_y=this.y+40;
+        this.bullet_x=0;
     }
 
     draw(Xpos, animation){
@@ -222,16 +302,81 @@ class alien2 {
             this.explotion_timer++;
         }
     }
-}
+    shoot(){
+        if (this.alive==1 && this.shooted==0){  
+            if (this.shooted==0){
+                this. shooting_confirmation = Math.floor(Math.random() * 70);
+                if (this.shooting_confirmation==10){
+                    this.shooted=1;
+                }
+            }
+            if (this.shooted==1){
+                let  bulletXpos = 0;
+                let bulletYPos = 0;
+                let imageheight = 15;
+                let imagewidth = 8;
+                this.bullet_x=this.x;
+                const sprites = new Image();
+                sprites.src = "./sprites/shoots/alien_shoot1.png";
+                ctx.drawImage(sprites, bulletXpos, bulletYPos, 5, 10, this.bullet_x+21, this.bullet_y,imagewidth, imageheight);
+            }
+        }
+    }
+    bullet_movement(){
+        if (this.shooted==1){
+            let  bulletXpos = 0;
+            let bulletYPos = 0;
+            let imageheight = 15;
+            let imagewidth = 8;
+            this.alien_bullet_speed++;
+            const sprites = new Image();
+            sprites.src = "./sprites/shoots/alien_shoot1.png";
+            ctx.drawImage(sprites, bulletXpos, bulletYPos, 5, 10, this.bullet_x+21, this.bullet_y,imagewidth, imageheight);
 
+            if (this.alien_bullet_speed==4){
+                this.bullet_y+=3;
+                this.alien_bullet_speed=0;
+            }
+
+            if (this.bullet_y>850){
+                this.shooted=0;
+            }
+        }
+    }
+    bullet_touches_tank(tankx){
+        let hit = 0;
+        if (this.shooted==1){
+            let tanky = 800;
+            if ((tankx < this.bullet_x+21)&&(tankx+65 > this.bullet_x+29) && (tanky<this.bullet_y)&&(tanky+25>this.bullet_y+15)){
+                this.shooted=0;
+                hit = 1;
+            }
+        }
+        return hit;
+    }
+}
 class alien3 {
     constructor(x,y){
         this.x=x;
         this.y=y;
         this.alive = 1;
         this.explotion_timer=0;
+        this.shooting_confirmation;
+        this.shooted=0;
+        this.alien_bullet_speed=0;
+        this.bullet_y=this.y+40;
+        this.bullet_x=0;
     }
-
+    reset(x,y){
+        this.x=x;
+        this.y=y;
+        this.alive = 1;
+        this.explotion_timer=0;
+        this.shooted=0;
+        this.alien_bullet_speed=0;
+        this.bullet_y=this.y;
+        this.bullet_x=0;
+    }
     draw(Xpos,animation){
         if (this.alive==1){
             let alien1XPos1 =  10;
@@ -296,52 +441,102 @@ class alien3 {
             this.explotion_timer++;
         }
     }
-}
+    shoot(){
+        if (this.alive==1 && this.shooted==0){  
+            if (this.shooted==0){
+                this. shooting_confirmation = Math.floor(Math.random() * 70);
+                if (this.shooting_confirmation==10){
+                    this.shooted=1;
+                }
+            }
+            if (this.shooted==1){
+                let  bulletXpos = 0;
+                let bulletYPos = 0;
+                let imageheight = 15;
+                let imagewidth = 8;
+                this.bullet_x=this.x;
+                const sprites = new Image();
+                sprites.src = "./sprites/shoots/alien_shoot1.png";
+                ctx.drawImage(sprites, bulletXpos, bulletYPos, 5, 10, this.bullet_x+21, this.bullet_y,imagewidth, imageheight);
+            }
+        }
+    }
+    bullet_movement(){
+        if (this.shooted==1){
+            let  bulletXpos = 0;
+            let bulletYPos = 0;
+            let imageheight = 15;
+            let imagewidth = 8;
+            this.alien_bullet_speed++;
+            const sprites = new Image();
+            sprites.src = "./sprites/shoots/alien_shoot1.png";
+            ctx.drawImage(sprites, bulletXpos, bulletYPos, 5, 10, this.bullet_x+21, this.bullet_y,imagewidth, imageheight);
 
+            if (this.alien_bullet_speed==4){
+                this.bullet_y+=3;
+                this.alien_bullet_speed=0;
+            }
+
+            if (this.bullet_y>850){
+                this.shooted=0;
+                
+            }
+        }
+    }
+    bullet_touches_tank(tankx){
+        let hit = 0;
+        if (this.shooted==1){
+            let tanky = 800;
+            if ((tankx < this.bullet_x+21)&&(tankx+65 > this.bullet_x+29) && (tanky<this.bullet_y)&&(tanky+25>this.bullet_y+15)){
+                this.shooted=0;
+                hit = 1;
+            }
+        }
+        return hit;
+    }
+}
 class shelter {
     constructor(x,y){
         this.x=x;
         this.y=y;
     }
     draw(){
-        let shelter1 = new Path2D();
-        shelter1.lineTo(this.x,this.y-100);
-        shelter1.lineTo(this.x-50,this.y-100);
-        shelter1.lineTo(this.x-100,this.y-50);
-        shelter1.lineTo(this.x-100, this.y+100);
-        shelter1.lineTo(this.x-50,this.y+100);
-        shelter1.lineTo(this.x-50,this.y+50);
-        shelter1.lineTo(this.x-25,this.y);
-        shelter1.lineTo(this.x+25,this.y);
-        shelter1.lineTo(this.x+50,this.y+50);
-        shelter1.lineTo(this.x+50,this.y+100);
-        shelter1.lineTo(this.x+100,this.y+100);
-        shelter1.lineTo(this.x+100,this.y-50);
-        shelter1.lineTo(this.x+50,this.y-100);
-        shelter1.closePath();
-        ctx.fillStyle="#06d41e"
-        ctx.fill(shelter1);
+        let shelterPosX =0;
+        let shelterPosY =0;
+        let imagewidth = 150;
+        let imageheight = 100;
+        const sprites = new Image();
+        sprites.src = "./sprites/shelter/0000.png";
+        ctx.drawImage(sprites,shelterPosX, shelterPosY,imagewidth, imageheight, this.x,this.y, imagewidth, imageheight );
     }
 }
-
 class tank{
     constructor(x,y){
         this.x=x;
         this.y=y;
         this.x_bullet = 0;
         this.y_bullet = 0;
+        this.alive = 0;
+    }
+    reset(x,y){
+        this.x=x;
+        this.y=y;
+        this.x_bullet = 0;
+        this.y_bullet = 0;
+        this.alive = 0;
     }
     draw(Xpos){
-        let tankXPos =  0;
-        let tankYPos = 5;
-        let imageheight = 25;
-        let imagewidth = 65;
-        this.x = Xpos;
-        const sprites = new Image();
-        sprites.src = "./sprites/tank/tank.png";
-        ctx.drawImage(sprites, tankXPos,tankYPos, imagewidth,imageheight, this.x,this.y,imagewidth,imageheight);
+        if (this.alive==0){
+            let tankXPos =  0;
+            let tankYPos = 5;
+            let imageheight = 25;
+            let imagewidth = 65;
+            this.x = Xpos;
+            const sprites = new Image();
+            sprites.src = "./sprites/tank/tank.png";
+            ctx.drawImage(sprites, tankXPos,tankYPos, imagewidth,imageheight, this.x,this.y,imagewidth,imageheight);
+        }
     }
-
     draw_shoot(Xpos, Ypos){
         this.x_bullet=Xpos;
         this.y_bullet=Ypos;
@@ -353,9 +548,32 @@ class tank{
         sprites.src = "./sprites/shoots/tank_shoot.png";
         ctx.drawImage(sprites, bulletXpos, bulletYPos, imagewidth, imageheight, this.x_bullet, this.y_bullet, imagewidth, imageheight);
     }
+    draw_explotion(Xpos,tank_animation){
+        if (this.alive==1){
+            let tankXPos1 =  0;
+            let tankYPos1 = 0;
+            let tankXPos2 = 75;
+            let tankYPos2 = 0;
+            let imageheight = 50;
+            let imagewidth = 65;
+            this.x = Xpos;
+            const sprites = new Image();
+            sprites.src = "./sprites/explotion/tank_explotion.png";
+
+            if (tank_animation==1){
+                ctx.drawImage(sprites, tankXPos1,tankYPos1, imagewidth,imageheight, this.x,this.y-25,imagewidth,imageheight);    
+            }
+            if (tank_animation==2){
+            ctx.drawImage(sprites, tankXPos2,tankYPos2, imagewidth,imageheight, this.x,this.y-25,imagewidth,imageheight);    
+            }
+        }
+    }
+}
+function presentationText(){
+    
 }
 
-// Constantes, variables y demas, borrar corchetes
+
 
 let distance = 70;
 let xprime = 310;
@@ -364,10 +582,15 @@ let yalienkiller = 800;
 let alienspeed = 0;
 let direction = 0;
 let animation = 1;
+let burning_animation = 1;
 let bullet_exist = 0;
 let bullet_speed = 0;
 let bulletX=0;
 let bulletY=800;
+let shooting_counter = 0;
+let someone_hit = new Array(60);
+let tank_explotion_timer = 0;
+let tank_burning_animation_limit = 1000;
 
 const alien1row1 = new alien1(xprime+(0*distance),100);
 const alien2row1 = new alien1(xprime+(1*distance),100);
@@ -435,8 +658,12 @@ const alien8row6 = new alien3(xprime+(7*distance),400);
 const alien9row6 = new alien3(xprime+(8*distance),400);
 const alien10row6 = new alien3(xprime+(9*distance),400);
 
-const alienkiller = new tank(xalienkiller, yalienkiller);
+const shelter1 = new shelter(140,650);
+const shelter2 = new shelter(430,650);
+const shelter3 = new shelter(720,650);
+const shelter4 = new shelter(1010,650);
 
+const alienkiller = new tank(xalienkiller, yalienkiller);
 
 window.onload=function (){
     canv = document.getElementById("background_animation");
@@ -448,26 +675,7 @@ window.onload=function (){
     let spaceinvaders = setInterval(game,2);
 }
 
-
-function game(){
-    ctx.clearRect(0, 0, canv.width, canv.height);
-
-    if (alienspeed<100){
-        alienspeed++;
-    }
-
-
-    // Alien animation selected per cycle
-    if (alienspeed==100){
-        if (animation==1){
-            animation=2;
-        }
-        else{
-            animation=1;
-        }
-    }
-
-    // Alien animation #1 drawn
+function draw_characters(){
     alien1row1.draw(xprime+(0*distance), animation);
     alien2row1.draw(xprime+(1*distance),animation);
     alien3row1.draw(xprime+(2*distance),animation);
@@ -533,9 +741,14 @@ function game(){
     alien8row6.draw(xprime+(7*distance),animation);
     alien9row6.draw(xprime+(8*distance),animation);
     alien10row6.draw(xprime+(9*distance),animation);
-
-
-    // EXPLOTION SECUENCE 
+}
+function draw_shelter(){
+    shelter1.draw();
+    shelter2.draw();
+    shelter3.draw();
+    shelter4.draw();
+}
+function draw_explotion(){
     alien1row1.explotion(xprime+(0*distance));
     alien2row1.explotion(xprime+(1*distance));
     alien3row1.explotion(xprime+(2*distance));
@@ -601,44 +814,213 @@ function game(){
     alien8row6.explotion(xprime+(7*distance));
     alien9row6.explotion(xprime+(8*distance));
     alien10row6.explotion(xprime+(9*distance));
-    
-    // aliens move to the left
-    if (alienspeed==100 && direction==1){
-        alienspeed=0;
-        xprime-=10;
-        if (xprime==10){
-            direction = 0;
-        }
+}
+function draw_bullet(){
+    alien1row1.shoot();
+    alien2row1.shoot();
+    alien3row1.shoot();
+    alien4row1.shoot();
+    alien5row1.shoot();
+    alien6row1.shoot();
+    alien7row1.shoot();
+    alien8row1.shoot();
+    alien9row1.shoot();
+    alien10row1.shoot();
+
+    alien1row2.shoot();
+    alien2row2.shoot();
+    alien3row2.shoot();
+    alien4row2.shoot();
+    alien5row2.shoot();
+    alien6row2.shoot();
+    alien7row2.shoot();
+    alien8row2.shoot();
+    alien9row2.shoot();
+    alien10row2.shoot();
+
+    alien1row3.shoot();
+    alien2row3.shoot();
+    alien3row3.shoot();
+    alien4row3.shoot();
+    alien5row3.shoot();
+    alien6row3.shoot();
+    alien7row3.shoot();
+    alien8row3.shoot();
+    alien9row3.shoot();
+    alien10row3.shoot();
+
+    alien1row4.shoot();
+    alien2row4.shoot();
+    alien3row4.shoot();
+    alien4row4.shoot();
+    alien5row4.shoot();
+    alien6row4.shoot();
+    alien7row4.shoot();
+    alien8row4.shoot();
+    alien9row4.shoot();
+    alien10row4.shoot();
+
+    alien1row5.shoot();
+    alien2row5.shoot();
+    alien3row5.shoot();
+    alien4row5.shoot();
+    alien5row5.shoot();
+    alien6row5.shoot();
+    alien7row5.shoot();
+    alien8row5.shoot();
+    alien9row5.shoot();
+    alien10row5.shoot();
+
+    alien1row6.shoot();
+    alien2row6.shoot();
+    alien3row6.shoot()
+    alien4row6.shoot();
+    alien5row6.shoot();
+    alien6row6.shoot();
+    alien7row6.shoot();
+    alien8row6.shoot();
+    alien9row6.shoot();
+    alien10row6.shoot();
+}
+function draw_bullet_movement(){
+    alien1row1.bullet_movement();
+    alien2row1.bullet_movement();
+    alien3row1.bullet_movement();
+    alien4row1.bullet_movement();
+    alien6row1.bullet_movement();
+    alien5row1.bullet_movement();
+    alien7row1.bullet_movement();
+    alien8row1.bullet_movement();
+    alien9row1.bullet_movement();
+    alien10row1.bullet_movement();
+
+    alien1row2.bullet_movement();
+    alien2row2.bullet_movement();
+    alien3row2.bullet_movement();
+    alien4row2.bullet_movement();
+    alien5row2.bullet_movement();
+    alien6row2.bullet_movement();
+    alien7row2.bullet_movement();
+    alien8row2.bullet_movement();
+    alien9row2.bullet_movement();
+    alien10row2.bullet_movement();
+
+    alien1row3.bullet_movement();
+    alien2row3.bullet_movement();
+    alien3row3.bullet_movement();
+    alien4row3.bullet_movement();
+    alien5row3.bullet_movement();
+    alien6row3.bullet_movement();
+    alien7row3.bullet_movement();
+    alien8row3.bullet_movement();
+    alien9row3.bullet_movement();
+    alien10row3.bullet_movement();
+
+    alien1row4.bullet_movement();
+    alien2row4.bullet_movement();
+    alien3row4.bullet_movement();
+    alien4row4.bullet_movement();
+    alien5row4.bullet_movement();
+    alien6row4.bullet_movement();
+    alien7row4.bullet_movement();
+    alien8row4.bullet_movement();
+    alien9row4.bullet_movement();
+    alien10row4.bullet_movement();
+
+    alien1row5.bullet_movement();
+    alien2row5.bullet_movement();
+    alien3row5.bullet_movement();
+    alien4row5.bullet_movement();
+    alien5row5.bullet_movement();
+    alien6row5.bullet_movement();
+    alien7row5.bullet_movement();
+    alien8row5.bullet_movement();
+    alien9row5.bullet_movement();
+    alien10row5.bullet_movement();
+
+    alien1row6.bullet_movement();
+    alien2row6.bullet_movement();
+    alien3row6.bullet_movement();
+    alien4row6.bullet_movement();
+    alien5row6.bullet_movement();
+    alien6row6.bullet_movement();
+    alien7row6.bullet_movement();
+    alien8row6.bullet_movement();
+    alien9row6.bullet_movement();
+    alien10row6.bullet_movement();
+}
+function impact_on_tank(){
+    someone_hit[0] = alien1row1.bullet_touches_tank(alienkiller.x);
+    someone_hit[1] = alien2row1.bullet_touches_tank(alienkiller.x);
+    someone_hit[2] = alien3row1.bullet_touches_tank(alienkiller.x);
+    someone_hit[3] = alien4row1.bullet_touches_tank(alienkiller.x);
+    someone_hit[4] = alien5row1.bullet_touches_tank(alienkiller.x);
+    someone_hit[5] = alien6row1.bullet_touches_tank(alienkiller.x);
+    someone_hit[6] = alien7row1.bullet_touches_tank(alienkiller.x);
+    someone_hit[7] = alien8row1.bullet_touches_tank(alienkiller.x);
+    someone_hit[8] = alien9row1.bullet_touches_tank(alienkiller.x);
+    someone_hit[9] = alien10row1.bullet_touches_tank(alienkiller.x);
+
+    someone_hit[10] = alien1row2.bullet_touches_tank(alienkiller.x);
+    someone_hit[11] = alien2row2.bullet_touches_tank(alienkiller.x);
+    someone_hit[12] = alien3row2.bullet_touches_tank(alienkiller.x);
+    someone_hit[13] = alien4row2.bullet_touches_tank(alienkiller.x);
+    someone_hit[14] = alien5row2.bullet_touches_tank(alienkiller.x);
+    someone_hit[15] = alien6row2.bullet_touches_tank(alienkiller.x);
+    someone_hit[16] = alien7row2.bullet_touches_tank(alienkiller.x);
+    someone_hit[17] = alien8row2.bullet_touches_tank(alienkiller.x);
+    someone_hit[18] = alien9row2.bullet_touches_tank(alienkiller.x);
+    someone_hit[19] = alien10row2.bullet_touches_tank(alienkiller.x);
+
+    someone_hit[20] = alien1row3.bullet_touches_tank(alienkiller.x);
+    someone_hit[21] = alien2row3.bullet_touches_tank(alienkiller.x);
+    someone_hit[22] = alien3row3.bullet_touches_tank(alienkiller.x);
+    someone_hit[23] = alien4row3.bullet_touches_tank(alienkiller.x);
+    someone_hit[24] = alien5row3.bullet_touches_tank(alienkiller.x);
+    someone_hit[25] = alien6row3.bullet_touches_tank(alienkiller.x);
+    someone_hit[26] = alien7row3.bullet_touches_tank(alienkiller.x);
+    someone_hit[27] = alien8row3.bullet_touches_tank(alienkiller.x);
+    someone_hit[28] = alien9row3.bullet_touches_tank(alienkiller.x);
+    someone_hit[29] = alien10row3.bullet_touches_tank(alienkiller.x);
+
+    someone_hit[30] = alien1row4.bullet_touches_tank(alienkiller.x);
+    someone_hit[31] = alien2row4.bullet_touches_tank(alienkiller.x);
+    someone_hit[32] = alien3row4.bullet_touches_tank(alienkiller.x);
+    someone_hit[33] = alien4row4.bullet_touches_tank(alienkiller.x);
+    someone_hit[34] = alien5row4.bullet_touches_tank(alienkiller.x);
+    someone_hit[35] = alien6row4.bullet_touches_tank(alienkiller.x);
+    someone_hit[36] = alien7row4.bullet_touches_tank(alienkiller.x);
+    someone_hit[37] = alien8row4.bullet_touches_tank(alienkiller.x);
+    someone_hit[38] = alien9row4.bullet_touches_tank(alienkiller.x);
+    someone_hit[39] = alien10row4.bullet_touches_tank(alienkiller.x);
+
+    someone_hit[40] = alien1row5.bullet_touches_tank(alienkiller.x);
+    someone_hit[41] = alien2row5.bullet_touches_tank(alienkiller.x);
+    someone_hit[42] = alien3row5.bullet_touches_tank(alienkiller.x);
+    someone_hit[43] = alien4row5.bullet_touches_tank(alienkiller.x);
+    someone_hit[44] = alien5row5.bullet_touches_tank(alienkiller.x);
+    someone_hit[45] = alien6row5.bullet_touches_tank(alienkiller.x);
+    someone_hit[46] = alien7row5.bullet_touches_tank(alienkiller.x);
+    someone_hit[47] = alien8row5.bullet_touches_tank(alienkiller.x);
+    someone_hit[48] = alien9row5.bullet_touches_tank(alienkiller.x);
+    someone_hit[49] = alien10row5.bullet_touches_tank(alienkiller.x);
+
+    someone_hit[50] = alien1row6.bullet_touches_tank(alienkiller.x);
+    someone_hit[51] = alien2row6.bullet_touches_tank(alienkiller.x);
+    someone_hit[52] = alien3row6.bullet_touches_tank(alienkiller.x)
+    someone_hit[53] = alien4row6.bullet_touches_tank(alienkiller.x);
+    someone_hit[54] = alien5row6.bullet_touches_tank(alienkiller.x);
+    someone_hit[55] = alien6row6.bullet_touches_tank(alienkiller.x);
+    someone_hit[56] = alien7row6.bullet_touches_tank(alienkiller.x);
+    someone_hit[57] = alien8row6.bullet_touches_tank(alienkiller.x);
+    someone_hit[58] = alien9row6.bullet_touches_tank(alienkiller.x);
+    someone_hit[59] = alien10row6.bullet_touches_tank(alienkiller.x);
+
+    if(someone_hit.indexOf(1) !== -1){
+        alienkiller.alive=1;
     }
-    // aliens move to the right
-    if (alienspeed==100 && direction==0){
-        alienspeed=0;
-        xprime+=10;
-        if (xprime==610){
-            direction = 1;
-        }
-    }
-
-    // if bullet is invoked on screen 
-    if (bullet_exist==1){
-
-        if (bullet_speed == 0){
-            bulletX = xalienkiller+30;
-        } 
-        bulletY -= 5;
-        alienkiller.draw_shoot(bulletX, bulletY);
-        bullet_speed ++;
-
-        if (bulletY==0){
-            bullet_exist=0;
-            bulletY = 800;
-            bullet_speed= 0;
-        }
-        
-
-    }
-
-    // if alien collides with bullet
+}
+function destruction_check(){
     alien1row1.destroy(alienkiller.x_bullet,alienkiller.y_bullet);
     alien2row1.destroy(alienkiller.x_bullet,alienkiller.y_bullet);
     alien3row1.destroy(alienkiller.x_bullet,alienkiller.y_bullet);
@@ -704,23 +1086,76 @@ function game(){
     alien8row6.destroy(alienkiller.x_bullet,alienkiller.y_bullet);
     alien9row6.destroy(alienkiller.x_bullet,alienkiller.y_bullet);
     alien10row6.destroy(alienkiller.x_bullet,alienkiller.y_bullet);
-
-    if (alien1row1.alive==2 || alien2row1.alive==2 || alien3row1.alive==2 || alien4row1.alive==2 ||alien5row1.alive==2 ||alien6row1.alive==2 ||alien7row1.alive==2 ||alien8row1.alive==2 ||alien9row1.alive==2 ||alien10row1.alive==2 ||alien1row2.alive==2 || alien2row2.alive==2 || alien3row2.alive==2 || alien4row2.alive==2 ||alien5row2.alive==2 ||alien6row2.alive==2 ||alien7row2.alive==2 ||alien8row2.alive==2 ||alien9row2.alive==2 ||alien10row2.alive==2 ||alien1row3.alive==2 || alien2row3.alive==2 || alien3row3.alive==2 || alien4row3.alive==2 ||alien5row3.alive==2 ||alien6row3.alive==2 ||alien7row3.alive==2 ||alien8row3.alive==2 ||alien9row3.alive==2 ||alien10row3.alive==2 ||alien1row4.alive==2 || alien2row4.alive==2 || alien3row4.alive==2 || alien4row4.alive==2 ||alien5row4.alive==2 ||alien6row4.alive==2 ||alien7row4.alive==2 ||alien8row4.alive==2 ||alien9row4.alive==2 ||alien10row4.alive==2 ||alien1row5.alive==2 || alien2row5.alive==2 || alien3row5.alive==2 || alien4row5.alive==2 ||alien5row5.alive==2 ||alien6row5.alive==2 ||alien7row5.alive==2 ||alien8row5.alive==2 ||alien9row5.alive==2 ||alien10row5.alive==2||alien1row6.alive==2 || alien2row6.alive==2 || alien3row6.alive==2 || alien4row6.alive==2 ||alien5row6.alive==2 ||alien6row6.alive==2 ||alien7row6.alive==2 ||alien8row6.alive==2 ||alien9row6.alive==2 ||alien10row6.alive==2){
-        bullet_exist=0;
-        alienkiller.y_bullet = 800;
-        alienkiller.x_bullet=0
-        bullet_speed= 0;
-        bulletY =800;
-    }
-
-    
-
-    alienkiller.draw(xalienkiller); 
-
 }
+function character_reset(){
+    alien1row1.reset(xprime+(0*distance),100);
+    alien2row1.reset(xprime+(1*distance),100);
+    alien3row1.reset(xprime+(2*distance),100);
+    alien4row1.reset(xprime+(3*distance),100);
+    alien5row1.reset(xprime+(4*distance),100);
+    alien6row1.reset(xprime+(5*distance),100);
+    alien7row1.reset(xprime+(6*distance),100);
+    alien8row1.reset(xprime+(7*distance),100);
+    alien9row1.reset(xprime+(8*distance),100);
+    alien10row1.reset(xprime+(9*distance),100);
 
+    alien1row2.reset(xprime+(0*distance),160);
+    alien2row2.reset(xprime+(1*distance),160);
+    alien3row2.reset(xprime+(2*distance),160);
+    alien4row2.reset(xprime+(3*distance),160);
+    alien5row2.reset(xprime+(4*distance),160);
+    alien6row2.reset(xprime+(5*distance),160);
+    alien7row2.reset(xprime+(6*distance),160);
+    alien8row2.reset(xprime+(7*distance),160);
+    alien9row2.reset(xprime+(8*distance),160);
+    alien10row2.reset(xprime+(9*distance),160);
 
+    alien1row3.reset(xprime+(0*distance),220);
+    alien2row3.reset(xprime+(1*distance),220);
+    alien3row3.reset(xprime+(2*distance),220);
+    alien4row3.reset(xprime+(3*distance),220);
+    alien5row3.reset(xprime+(4*distance),220);
+    alien6row3.reset(xprime+(5*distance),220);
+    alien7row3.reset(xprime+(6*distance),220);
+    alien8row3.reset(xprime+(7*distance),220);
+    alien9row3.reset(xprime+(8*distance),220);
+    alien10row3.reset(xprime+(9*distance),220);
 
+    alien1row4.reset(xprime+(0*distance),280);
+    alien2row4.reset(xprime+(1*distance),280);
+    alien3row4.reset(xprime+(2*distance),280);
+    alien4row4.reset(xprime+(3*distance),280);
+    alien5row4.reset(xprime+(4*distance),280);
+    alien6row4.reset(xprime+(5*distance),280);
+    alien7row4.reset(xprime+(6*distance),280);
+    alien8row4.reset(xprime+(7*distance),280);
+    alien9row4.reset(xprime+(8*distance),280);
+    alien10row4.reset(xprime+(9*distance),280);
+
+    alien1row5.reset(xprime+(0*distance),340);
+    alien2row5.reset(xprime+(1*distance),340);
+    alien3row5.reset(xprime+(2*distance),340);
+    alien4row5.reset(xprime+(3*distance),340);
+    alien5row5.reset(xprime+(4*distance),340);
+    alien6row5.reset(xprime+(5*distance),340);
+    alien7row5.reset(xprime+(6*distance),340);
+    alien8row5.reset(xprime+(7*distance),340);
+    alien9row5.reset(xprime+(8*distance),340);
+    alien10row5.reset(xprime+(9*distance),340);
+
+    alien1row6.reset(xprime+(0*distance),400);
+    alien2row6.reset(xprime+(1*distance),400);
+    alien3row6.reset(xprime+(2*distance),400);
+    alien4row6.reset(xprime+(3*distance),400);
+    alien5row6.reset(xprime+(4*distance),400);
+    alien6row6.reset(xprime+(5*distance),400);
+    alien7row6.reset(xprime+(6*distance),400);
+    alien8row6.reset(xprime+(7*distance),400);
+    alien9row6.reset(xprime+(8*distance),400);
+    alien10row6.reset(xprime+(9*distance),400);
+
+    alienkiller.reset(xalienkiller, yalienkiller);
+}
 function tankMovement(evt){
     switch (evt.keyCode) {
         case 37:
@@ -730,7 +1165,7 @@ function tankMovement(evt){
             break;
     
         case 39:
-            if (xalienkiller<1265){
+            if (xalienkiller<1230){
                 xalienkiller+=10;
             }
         
@@ -738,7 +1173,6 @@ function tankMovement(evt){
 
     }
 }
-
 function shoot(evt){
     switch (evt.keyCode){
         case 32:
@@ -747,4 +1181,158 @@ function shoot(evt){
     }
 }
 
+let inicio = 0;
 
+function game(){
+    if (inicio==0){
+        inicio=1;
+        distance = 70;
+        xprime = 310;
+        xalienkiller = 600;
+        yalienkiller = 800;
+        alienspeed = 0;
+        direction = 0;
+        animation = 1;
+        bullet_exist = 0;
+        bullet_speed = 0;
+        bulletX=0;
+        bulletY=800;
+        shooting_counter =0;
+        tank_explotion_timer = 0;
+
+        // Character reset
+        character_reset();
+    }
+    if (inicio ==1 && alienkiller.alive==0){
+        ctx.clearRect(0, 0, canv.width, canv.height);
+
+        if (alienspeed<100){
+            alienspeed++;
+        }
+
+        // Alien animation selected per cycle
+        if (alienspeed==100){
+            shooting_counter++;
+            if (animation==1){
+                animation=2;
+            }
+            else{
+                animation=1;
+            }
+        }
+
+        // Alien animations #1 and #2 drawn
+        // Tank drawn too
+        draw_characters();
+        alienkiller.draw(xalienkiller); 
+
+        //shelter drawn
+        draw_shelter();
+
+        // EXPLOTION SECUENCE 
+        draw_explotion();
+        
+        // aliens move to the left
+        if (alienspeed==100 && direction==1){
+            alienspeed=0;
+            xprime-=10;
+            if (xprime==10){
+                direction = 0;
+            }
+        }
+        // aliens move to the right
+        if (alienspeed==100 && direction==0){
+            alienspeed=0;
+            xprime+=10;
+            if (xprime==610){
+                direction = 1;
+            }
+        }
+
+        // if bullet is invoked on screen 
+        if (bullet_exist==1){
+
+            if (bullet_speed == 0){
+                bulletX = xalienkiller+30;
+            } 
+            bulletY -= 5;
+            alienkiller.draw_shoot(bulletX, bulletY);
+            bullet_speed ++;
+
+            if (bulletY==0){
+                bullet_exist=0;
+                bulletY = 800;
+                bullet_speed= 0;
+            }
+            
+
+        }
+
+        //alines can shoot too
+        if (shooting_counter ==5){
+            draw_bullet();
+            shooting_counter=0;
+        }
+
+        //draw bullet every 5 cycles
+        draw_bullet_movement();
+
+        // Does tank gets hit by alien bullet?
+        impact_on_tank();
+
+        // if alien collides with bullet
+        destruction_check();
+
+        if (alien1row1.alive==2 || alien2row1.alive==2 || alien3row1.alive==2 || alien4row1.alive==2 ||alien5row1.alive==2 ||alien6row1.alive==2 ||alien7row1.alive==2 ||alien8row1.alive==2 ||alien9row1.alive==2 ||alien10row1.alive==2 ||alien1row2.alive==2 || alien2row2.alive==2 || alien3row2.alive==2 || alien4row2.alive==2 ||alien5row2.alive==2 ||alien6row2.alive==2 ||alien7row2.alive==2 ||alien8row2.alive==2 ||alien9row2.alive==2 ||alien10row2.alive==2 ||alien1row3.alive==2 || alien2row3.alive==2 || alien3row3.alive==2 || alien4row3.alive==2 ||alien5row3.alive==2 ||alien6row3.alive==2 ||alien7row3.alive==2 ||alien8row3.alive==2 ||alien9row3.alive==2 ||alien10row3.alive==2 ||alien1row4.alive==2 || alien2row4.alive==2 || alien3row4.alive==2 || alien4row4.alive==2 ||alien5row4.alive==2 ||alien6row4.alive==2 ||alien7row4.alive==2 ||alien8row4.alive==2 ||alien9row4.alive==2 ||alien10row4.alive==2 ||alien1row5.alive==2 || alien2row5.alive==2 || alien3row5.alive==2 || alien4row5.alive==2 ||alien5row5.alive==2 ||alien6row5.alive==2 ||alien7row5.alive==2 ||alien8row5.alive==2 ||alien9row5.alive==2 ||alien10row5.alive==2||alien1row6.alive==2 || alien2row6.alive==2 || alien3row6.alive==2 || alien4row6.alive==2 ||alien5row6.alive==2 ||alien6row6.alive==2 ||alien7row6.alive==2 ||alien8row6.alive==2 ||alien9row6.alive==2 ||alien10row6.alive==2){
+            bullet_exist=0;
+            alienkiller.y_bullet = 800;
+            alienkiller.x_bullet=0
+            bullet_speed= 0;
+            bulletY =800;
+        }
+
+
+        if (alien1row1.alive==3 && alien2row1.alive==3 && alien3row1.alive==3 && alien4row1.alive==3 && alien5row1.alive==3 && alien6row1.alive==3 && alien7row1.alive==3 && alien8row1.alive==3 && alien9row1.alive==3 && alien10row1.alive==3 && alien1row2.alive==3 && alien2row2.alive==3 && alien3row2.alive==3 && alien4row2.alive==3 && alien5row2.alive==3 && alien6row2.alive==3 && alien7row2.alive==3 && alien8row2.alive==3 && alien9row2.alive==3 && alien10row2.alive==3 && alien1row3.alive==3 && alien2row3.alive==3 && alien3row3.alive==3 && alien4row3.alive==3 && alien5row3.alive==3 && alien6row3.alive==3 && alien7row3.alive==3 && alien8row3.alive==3 && alien9row3.alive==3 && alien10row3.alive==3 && alien1row4.alive==3 && alien2row4.alive==3 && alien3row4.alive==3 && alien4row4.alive==3 && alien5row4.alive==3 && alien6row4.alive==3 && alien7row4.alive==3 &&alien8row4.alive==3 && alien9row4.alive==3 && alien10row4.alive==3 && alien1row5.alive==3 && alien2row5.alive==3 && alien3row5.alive==3 && alien4row5.alive==3 && alien5row5.alive==3 && alien6row5.alive==3 && alien7row5.alive==3 && alien8row5.alive==3 && alien9row5.alive==3 && alien10row5.alive==3 && alien1row6.alive==3 && alien2row6.alive==3 && alien3row6.alive==3 && alien4row6.alive==3 && alien5row6.alive==3 && alien6row6.alive==3 && alien7row6.alive==3 && alien8row6.alive==3 && alien9row6.alive==3 && alien10row6.alive==3){
+            inicio = 0;
+        }
+    }
+    if (alienkiller.alive==1 && tank_explotion_timer<=tank_burning_animation_limit){
+        ctx.clearRect(0, 0, canv.width, canv.height);
+
+        if (alienspeed<100){
+            alienspeed++;
+        }
+        // Alien animation selected per cycle
+        if (alienspeed==100){
+            if (animation==1){
+                animation=2;
+            }
+            else{
+                animation=1;
+            }
+            alienspeed=0;
+        }
+
+        // Tank burning animation
+        if (tank_explotion_timer==50 || tank_explotion_timer==150 || tank_explotion_timer==250 || tank_explotion_timer==350 || tank_explotion_timer==450 || tank_explotion_timer==550 || tank_explotion_timer==650 || tank_explotion_timer==750 || tank_explotion_timer==850 || tank_explotion_timer==950){
+            burning_animation =2;
+        }
+        if (tank_explotion_timer==100 || tank_explotion_timer==200 || tank_explotion_timer==300 || tank_explotion_timer==400 || tank_explotion_timer==500 || tank_explotion_timer==600 || tank_explotion_timer==700 || tank_explotion_timer==800 || tank_explotion_timer==900 || tank_explotion_timer==1000){
+            burning_animation =1;
+        }
+        // Alien animations #1 and #2 drawn
+        // Tank drawn too
+        // Shelter gets drawn too
+        draw_characters();
+        draw_shelter();
+        alienkiller.draw_explotion(xalienkiller,burning_animation); 
+
+        tank_explotion_timer++;
+        if (tank_explotion_timer==tank_burning_animation_limit){
+            inicio=0;
+            alienkiller.alive=0;
+        }
+    }
+    
+
+}
