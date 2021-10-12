@@ -1659,6 +1659,7 @@ function game(){
 
         if (alienspeed<100){
             alienspeed++;
+            
         }
         // Alien animation selected per cycle
         if (alienspeed==100){
