@@ -199,6 +199,7 @@ class alien1 {
 
             if (this.bullet_y>850){
                 this.shooted=0;
+                this.bullet_y=this.y+40;
             }
         }
     }
@@ -209,6 +210,7 @@ class alien1 {
             if ((tankx < this.bullet_x+21)&&(tankx+65 > this.bullet_x+29) && (tanky<this.bullet_y)&&(tanky+25>this.bullet_y+15)){
                 this.shooted=0;
                 hit = 1;
+                this.bullet_y=this.y+40;
             }
         }
         return hit;
@@ -340,6 +342,7 @@ class alien2 {
 
             if (this.bullet_y>850){
                 this.shooted=0;
+                this.bullet_y=this.y+40;
             }
         }
     }
@@ -350,6 +353,7 @@ class alien2 {
             if ((tankx < this.bullet_x+21)&&(tankx+65 > this.bullet_x+29) && (tanky<this.bullet_y)&&(tanky+25>this.bullet_y+15)){
                 this.shooted=0;
                 hit = 1;
+                this.bullet_y=this.y+40;
             }
         }
         return hit;
@@ -479,6 +483,7 @@ class alien3 {
 
             if (this.bullet_y>850){
                 this.shooted=0;
+                this.bullet_y=this.y+40;
                 
             }
         }
@@ -490,6 +495,7 @@ class alien3 {
             if ((tankx < this.bullet_x+21)&&(tankx+65 > this.bullet_x+29) && (tanky<this.bullet_y)&&(tanky+25>this.bullet_y+15)){
                 this.shooted=0;
                 hit = 1;
+                this.bullet_y=this.y+40;
             }
         }
         return hit;
@@ -499,6 +505,29 @@ class shelter {
     constructor(x,y){
         this.x=x;
         this.y=y;
+        this.left=0;
+        this.leftcenter=0;
+        this.rightcenter=0;
+        this.right=0;
+        this.shelter_draw_number;
+        this.shelter_draw_string;
+    }
+    hit(bulletx, bullety){
+
+        if (bulletx>this.x && bulletx+8<this.x+44 && bullety>this.y &&this.left<3000){
+            this.left+=1000;
+        }
+        if (bulletx>this.x+36 && bulletx+8<this.x+79 && bullety>this.y && this.leftcenter<200){
+            this.leftcenter+=100;
+        }
+        if (bulletx>this.x+71 && bulletx+8<this.x+114 && bullety>this.y && this.rightcenter<20){
+            this.rightcenter+=10;
+        }
+        if (bulletx>this.x+106 && bulletx+8<this.x+150 && bullety>this.y && this.right<3){
+            this.right+=1;
+        }
+        this.shelter_draw_number= this.left+this.leftcenter+this.rightcenter+this.right;
+        this.shelter_draw_string = this.shelter_draw_number.toString();
     }
     draw(){
         let shelterPosX =0;
@@ -506,9 +535,10 @@ class shelter {
         let imagewidth = 150;
         let imageheight = 100;
         const sprites = new Image();
-        sprites.src = "./sprites/shelter/0000.png";
+        sprites.src = "./sprites/shelter/"+this.shelter_draw_string+".png";
         ctx.drawImage(sprites,shelterPosX, shelterPosY,imagewidth, imageheight, this.x,this.y, imagewidth, imageheight );
     }
+
 }
 class tank{
     constructor(x,y){
@@ -743,10 +773,275 @@ function draw_characters(){
     alien10row6.draw(xprime+(9*distance),animation);
 }
 function draw_shelter(){
+
+    shelter1.hit(alien1row1.bullet_x+21,alien1row1.bullet_y);
+    shelter1.hit(alien2row1.bullet_x+21,alien2row1.bullet_y);
+    shelter1.hit(alien3row1.bullet_x+21,alien3row1.bullet_y);
+    shelter1.hit(alien4row1.bullet_x+21,alien4row1.bullet_y);
+    shelter1.hit(alien5row1.bullet_x+21,alien5row1.bullet_y);
+    shelter1.hit(alien6row1.bullet_x+21,alien6row1.bullet_y);
+    shelter1.hit(alien7row1.bullet_x+21,alien7row1.bullet_y);
+    shelter1.hit(alien8row1.bullet_x+21,alien8row1.bullet_y);
+    shelter1.hit(alien9row1.bullet_x+21,alien9row1.bullet_y);
+    shelter1.hit(alien10row1.bullet_x+21,alien10row1.bullet_y);
+
+    shelter1.hit(alien1row2.bullet_x+21,alien1row2.bullet_y);
+    shelter1.hit(alien2row2.bullet_x+21,alien2row2.bullet_y);
+    shelter1.hit(alien3row2.bullet_x+21,alien3row2.bullet_y);
+    shelter1.hit(alien4row2.bullet_x+21,alien4row2.bullet_y);
+    shelter1.hit(alien5row2.bullet_x+21,alien5row2.bullet_y);
+    shelter1.hit(alien6row2.bullet_x+21,alien6row2.bullet_y);
+    shelter1.hit(alien7row2.bullet_x+21,alien7row2.bullet_y);
+    shelter1.hit(alien8row2.bullet_x+21,alien8row2.bullet_y);
+    shelter1.hit(alien9row2.bullet_x+21,alien9row2.bullet_y);
+    shelter1.hit(alien10row2.bullet_x+21,alien10row2.bullet_y);
+
+    shelter1.hit(alien1row3.bullet_x+21,alien1row3.bullet_y);
+    shelter1.hit(alien2row3.bullet_x+21,alien2row3.bullet_y);
+    shelter1.hit(alien3row3.bullet_x+21,alien3row3.bullet_y);
+    shelter1.hit(alien4row3.bullet_x+21,alien4row3.bullet_y);
+    shelter1.hit(alien5row3.bullet_x+21,alien5row3.bullet_y);
+    shelter1.hit(alien6row3.bullet_x+21,alien6row3.bullet_y);
+    shelter1.hit(alien7row3.bullet_x+21,alien7row3.bullet_y);
+    shelter1.hit(alien8row3.bullet_x+21,alien8row3.bullet_y);
+    shelter1.hit(alien9row3.bullet_x+21,alien9row3.bullet_y);
+    shelter1.hit(alien10row3.bullet_x+21,alien10row3.bullet_y);
+
+    shelter1.hit(alien1row4.bullet_x+21,alien1row4.bullet_y);
+    shelter1.hit(alien2row4.bullet_x+21,alien2row4.bullet_y);
+    shelter1.hit(alien3row4.bullet_x+21,alien3row4.bullet_y);
+    shelter1.hit(alien4row4.bullet_x+21,alien4row4.bullet_y);
+    shelter1.hit(alien5row4.bullet_x+21,alien5row4.bullet_y);
+    shelter1.hit(alien6row4.bullet_x+21,alien6row4.bullet_y);
+    shelter1.hit(alien7row4.bullet_x+21,alien7row4.bullet_y);
+    shelter1.hit(alien8row4.bullet_x+21,alien8row4.bullet_y);
+    shelter1.hit(alien9row4.bullet_x+21,alien9row4.bullet_y);
+    shelter1.hit(alien10row4.bullet_x+21,alien10row4.bullet_y);
+
+    shelter1.hit(alien1row5.bullet_x+21,alien1row5.bullet_y);
+    shelter1.hit(alien2row5.bullet_x+21,alien2row5.bullet_y);
+    shelter1.hit(alien3row5.bullet_x+21,alien3row5.bullet_y);
+    shelter1.hit(alien4row5.bullet_x+21,alien4row5.bullet_y);
+    shelter1.hit(alien5row5.bullet_x+21,alien5row5.bullet_y);
+    shelter1.hit(alien6row5.bullet_x+21,alien6row5.bullet_y);
+    shelter1.hit(alien7row5.bullet_x+21,alien7row5.bullet_y);
+    shelter1.hit(alien8row5.bullet_x+21,alien8row5.bullet_y);
+    shelter1.hit(alien9row5.bullet_x+21,alien9row5.bullet_y);
+    shelter1.hit(alien10row5.bullet_x+21,alien10row5.bullet_y);
+
+    shelter1.hit(alien1row6.bullet_x+21,alien1row6.bullet_y);
+    shelter1.hit(alien2row6.bullet_x+21,alien2row6.bullet_y);
+    shelter1.hit(alien3row6.bullet_x+21,alien3row6.bullet_y);
+    shelter1.hit(alien4row6.bullet_x+21,alien4row6.bullet_y);
+    shelter1.hit(alien5row6.bullet_x+21,alien5row6.bullet_y);
+    shelter1.hit(alien6row6.bullet_x+21,alien6row6.bullet_y);
+    shelter1.hit(alien7row6.bullet_x+21,alien7row6.bullet_y);
+    shelter1.hit(alien8row6.bullet_x+21,alien8row6.bullet_y);
+    shelter1.hit(alien9row6.bullet_x+21,alien9row6.bullet_y);
+    shelter1.hit(alien10row6.bullet_x+21,alien10row6.bullet_y);
     shelter1.draw();
+
+    shelter2.hit(alien1row1.bullet_x+21,alien1row1.bullet_y);
+    shelter2.hit(alien2row1.bullet_x+21,alien2row1.bullet_y);
+    shelter2.hit(alien3row1.bullet_x+21,alien3row1.bullet_y);
+    shelter2.hit(alien4row1.bullet_x+21,alien4row1.bullet_y);
+    shelter2.hit(alien5row1.bullet_x+21,alien5row1.bullet_y);
+    shelter2.hit(alien6row1.bullet_x+21,alien6row1.bullet_y);
+    shelter2.hit(alien7row1.bullet_x+21,alien7row1.bullet_y);
+    shelter2.hit(alien8row1.bullet_x+21,alien8row1.bullet_y);
+    shelter2.hit(alien9row1.bullet_x+21,alien9row1.bullet_y);
+    shelter2.hit(alien10row1.bullet_x+21,alien10row1.bullet_y);
+
+    shelter2.hit(alien1row2.bullet_x+21,alien1row2.bullet_y);
+    shelter2.hit(alien2row2.bullet_x+21,alien2row2.bullet_y);
+    shelter2.hit(alien3row2.bullet_x+21,alien3row2.bullet_y);
+    shelter2.hit(alien4row2.bullet_x+21,alien4row2.bullet_y);
+    shelter2.hit(alien5row2.bullet_x+21,alien5row2.bullet_y);
+    shelter2.hit(alien6row2.bullet_x+21,alien6row2.bullet_y);
+    shelter2.hit(alien7row2.bullet_x+21,alien7row2.bullet_y);
+    shelter2.hit(alien8row2.bullet_x+21,alien8row2.bullet_y);
+    shelter2.hit(alien9row2.bullet_x+21,alien9row2.bullet_y);
+    shelter2.hit(alien10row2.bullet_x+21,alien10row2.bullet_y);
+
+    shelter2.hit(alien1row3.bullet_x+21,alien1row3.bullet_y);
+    shelter2.hit(alien2row3.bullet_x+21,alien2row3.bullet_y);
+    shelter2.hit(alien3row3.bullet_x+21,alien3row3.bullet_y);
+    shelter2.hit(alien4row3.bullet_x+21,alien4row3.bullet_y);
+    shelter2.hit(alien5row3.bullet_x+21,alien5row3.bullet_y);
+    shelter2.hit(alien6row3.bullet_x+21,alien6row3.bullet_y);
+    shelter2.hit(alien7row3.bullet_x+21,alien7row3.bullet_y);
+    shelter2.hit(alien8row3.bullet_x+21,alien8row3.bullet_y);
+    shelter2.hit(alien9row3.bullet_x+21,alien9row3.bullet_y);
+    shelter2.hit(alien10row3.bullet_x+21,alien10row3.bullet_y);
+
+    shelter2.hit(alien1row4.bullet_x+21,alien1row4.bullet_y);
+    shelter2.hit(alien2row4.bullet_x+21,alien2row4.bullet_y);
+    shelter2.hit(alien3row4.bullet_x+21,alien3row4.bullet_y);
+    shelter2.hit(alien4row4.bullet_x+21,alien4row4.bullet_y);
+    shelter2.hit(alien5row4.bullet_x+21,alien5row4.bullet_y);
+    shelter2.hit(alien6row4.bullet_x+21,alien6row4.bullet_y);
+    shelter2.hit(alien7row4.bullet_x+21,alien7row4.bullet_y);
+    shelter2.hit(alien8row4.bullet_x+21,alien8row4.bullet_y);
+    shelter2.hit(alien9row4.bullet_x+21,alien9row4.bullet_y);
+    shelter2.hit(alien10row4.bullet_x+21,alien10row4.bullet_y);
+
+    shelter2.hit(alien1row5.bullet_x+21,alien1row5.bullet_y);
+    shelter2.hit(alien2row5.bullet_x+21,alien2row5.bullet_y);
+    shelter2.hit(alien3row5.bullet_x+21,alien3row5.bullet_y);
+    shelter2.hit(alien4row5.bullet_x+21,alien4row5.bullet_y);
+    shelter2.hit(alien5row5.bullet_x+21,alien5row5.bullet_y);
+    shelter2.hit(alien6row5.bullet_x+21,alien6row5.bullet_y);
+    shelter2.hit(alien7row5.bullet_x+21,alien7row5.bullet_y);
+    shelter2.hit(alien8row5.bullet_x+21,alien8row5.bullet_y);
+    shelter2.hit(alien9row5.bullet_x+21,alien9row5.bullet_y);
+    shelter2.hit(alien10row5.bullet_x+21,alien10row5.bullet_y);
+
+    shelter2.hit(alien1row6.bullet_x+21,alien1row6.bullet_y);
+    shelter2.hit(alien2row6.bullet_x+21,alien2row6.bullet_y);
+    shelter2.hit(alien3row6.bullet_x+21,alien3row6.bullet_y);
+    shelter2.hit(alien4row6.bullet_x+21,alien4row6.bullet_y);
+    shelter2.hit(alien5row6.bullet_x+21,alien5row6.bullet_y);
+    shelter2.hit(alien6row6.bullet_x+21,alien6row6.bullet_y);
+    shelter2.hit(alien7row6.bullet_x+21,alien7row6.bullet_y);
+    shelter2.hit(alien8row6.bullet_x+21,alien8row6.bullet_y);
+    shelter2.hit(alien9row6.bullet_x+21,alien9row6.bullet_y);
+    shelter2.hit(alien10row6.bullet_x+21,alien10row6.bullet_y);
     shelter2.draw();
+
+    shelter3.hit(alien1row1.bullet_x+21,alien1row1.bullet_y);
+    shelter3.hit(alien2row1.bullet_x+21,alien2row1.bullet_y);
+    shelter3.hit(alien3row1.bullet_x+21,alien3row1.bullet_y);
+    shelter3.hit(alien4row1.bullet_x+21,alien4row1.bullet_y);
+    shelter3.hit(alien5row1.bullet_x+21,alien5row1.bullet_y);
+    shelter3.hit(alien6row1.bullet_x+21,alien6row1.bullet_y);
+    shelter3.hit(alien7row1.bullet_x+21,alien7row1.bullet_y);
+    shelter3.hit(alien8row1.bullet_x+21,alien8row1.bullet_y);
+    shelter3.hit(alien9row1.bullet_x+21,alien9row1.bullet_y);
+    shelter3.hit(alien10row1.bullet_x+21,alien10row1.bullet_y);
+
+    shelter3.hit(alien1row2.bullet_x+21,alien1row2.bullet_y);
+    shelter3.hit(alien2row2.bullet_x+21,alien2row2.bullet_y);
+    shelter3.hit(alien3row2.bullet_x+21,alien3row2.bullet_y);
+    shelter3.hit(alien4row2.bullet_x+21,alien4row2.bullet_y);
+    shelter3.hit(alien5row2.bullet_x+21,alien5row2.bullet_y);
+    shelter3.hit(alien6row2.bullet_x+21,alien6row2.bullet_y);
+    shelter3.hit(alien7row2.bullet_x+21,alien7row2.bullet_y);
+    shelter3.hit(alien8row2.bullet_x+21,alien8row2.bullet_y);
+    shelter3.hit(alien9row2.bullet_x+21,alien9row2.bullet_y);
+    shelter3.hit(alien10row2.bullet_x+21,alien10row2.bullet_y);
+
+    shelter3.hit(alien1row3.bullet_x+21,alien1row3.bullet_y);
+    shelter3.hit(alien2row3.bullet_x+21,alien2row3.bullet_y);
+    shelter3.hit(alien3row3.bullet_x+21,alien3row3.bullet_y);
+    shelter3.hit(alien4row3.bullet_x+21,alien4row3.bullet_y);
+    shelter3.hit(alien5row3.bullet_x+21,alien5row3.bullet_y);
+    shelter3.hit(alien6row3.bullet_x+21,alien6row3.bullet_y);
+    shelter3.hit(alien7row3.bullet_x+21,alien7row3.bullet_y);
+    shelter3.hit(alien8row3.bullet_x+21,alien8row3.bullet_y);
+    shelter3.hit(alien9row3.bullet_x+21,alien9row3.bullet_y);
+    shelter3.hit(alien10row3.bullet_x+21,alien10row3.bullet_y);
+
+    shelter3.hit(alien1row4.bullet_x+21,alien1row4.bullet_y);
+    shelter3.hit(alien2row4.bullet_x+21,alien2row4.bullet_y);
+    shelter3.hit(alien3row4.bullet_x+21,alien3row4.bullet_y);
+    shelter3.hit(alien4row4.bullet_x+21,alien4row4.bullet_y);
+    shelter3.hit(alien5row4.bullet_x+21,alien5row4.bullet_y);
+    shelter3.hit(alien6row4.bullet_x+21,alien6row4.bullet_y);
+    shelter3.hit(alien7row4.bullet_x+21,alien7row4.bullet_y);
+    shelter3.hit(alien8row4.bullet_x+21,alien8row4.bullet_y);
+    shelter3.hit(alien9row4.bullet_x+21,alien9row4.bullet_y);
+    shelter3.hit(alien10row4.bullet_x+21,alien10row4.bullet_y);
+
+    shelter3.hit(alien1row5.bullet_x+21,alien1row5.bullet_y);
+    shelter3.hit(alien2row5.bullet_x+21,alien2row5.bullet_y);
+    shelter3.hit(alien3row5.bullet_x+21,alien3row5.bullet_y);
+    shelter3.hit(alien4row5.bullet_x+21,alien4row5.bullet_y);
+    shelter3.hit(alien5row5.bullet_x+21,alien5row5.bullet_y);
+    shelter3.hit(alien6row5.bullet_x+21,alien6row5.bullet_y);
+    shelter3.hit(alien7row5.bullet_x+21,alien7row5.bullet_y);
+    shelter3.hit(alien8row5.bullet_x+21,alien8row5.bullet_y);
+    shelter3.hit(alien9row5.bullet_x+21,alien9row5.bullet_y);
+    shelter3.hit(alien10row5.bullet_x+21,alien10row5.bullet_y);
+
+    shelter3.hit(alien1row6.bullet_x+21,alien1row6.bullet_y);
+    shelter3.hit(alien2row6.bullet_x+21,alien2row6.bullet_y);
+    shelter3.hit(alien3row6.bullet_x+21,alien3row6.bullet_y);
+    shelter3.hit(alien4row6.bullet_x+21,alien4row6.bullet_y);
+    shelter3.hit(alien5row6.bullet_x+21,alien5row6.bullet_y);
+    shelter3.hit(alien6row6.bullet_x+21,alien6row6.bullet_y);
+    shelter3.hit(alien7row6.bullet_x+21,alien7row6.bullet_y);
+    shelter3.hit(alien8row6.bullet_x+21,alien8row6.bullet_y);
+    shelter3.hit(alien9row6.bullet_x+21,alien9row6.bullet_y);
+    shelter3.hit(alien10row6.bullet_x+21,alien10row6.bullet_y);
     shelter3.draw();
+
+    shelter4.hit(alien1row1.bullet_x+21,alien1row1.bullet_y);
+    shelter4.hit(alien2row1.bullet_x+21,alien2row1.bullet_y);
+    shelter4.hit(alien3row1.bullet_x+21,alien3row1.bullet_y);
+    shelter4.hit(alien4row1.bullet_x+21,alien4row1.bullet_y);
+    shelter4.hit(alien5row1.bullet_x+21,alien5row1.bullet_y);
+    shelter4.hit(alien6row1.bullet_x+21,alien6row1.bullet_y);
+    shelter4.hit(alien7row1.bullet_x+21,alien7row1.bullet_y);
+    shelter4.hit(alien8row1.bullet_x+21,alien8row1.bullet_y);
+    shelter4.hit(alien9row1.bullet_x+21,alien9row1.bullet_y);
+    shelter4.hit(alien10row1.bullet_x+21,alien10row1.bullet_y);
+
+    shelter4.hit(alien1row2.bullet_x+21,alien1row2.bullet_y);
+    shelter4.hit(alien2row2.bullet_x+21,alien2row2.bullet_y);
+    shelter4.hit(alien3row2.bullet_x+21,alien3row2.bullet_y);
+    shelter4.hit(alien4row2.bullet_x+21,alien4row2.bullet_y);
+    shelter4.hit(alien5row2.bullet_x+21,alien5row2.bullet_y);
+    shelter4.hit(alien6row2.bullet_x+21,alien6row2.bullet_y);
+    shelter4.hit(alien7row2.bullet_x+21,alien7row2.bullet_y);
+    shelter4.hit(alien8row2.bullet_x+21,alien8row2.bullet_y);
+    shelter4.hit(alien9row2.bullet_x+21,alien9row2.bullet_y);
+    shelter4.hit(alien10row2.bullet_x+21,alien10row2.bullet_y);
+
+    shelter4.hit(alien1row3.bullet_x+21,alien1row3.bullet_y);
+    shelter4.hit(alien2row3.bullet_x+21,alien2row3.bullet_y);
+    shelter4.hit(alien3row3.bullet_x+21,alien3row3.bullet_y);
+    shelter4.hit(alien4row3.bullet_x+21,alien4row3.bullet_y);
+    shelter4.hit(alien5row3.bullet_x+21,alien5row3.bullet_y);
+    shelter4.hit(alien6row3.bullet_x+21,alien6row3.bullet_y);
+    shelter4.hit(alien7row3.bullet_x+21,alien7row3.bullet_y);
+    shelter4.hit(alien8row3.bullet_x+21,alien8row3.bullet_y);
+    shelter4.hit(alien9row3.bullet_x+21,alien9row3.bullet_y);
+    shelter4.hit(alien10row3.bullet_x+21,alien10row3.bullet_y);
+
+    shelter4.hit(alien1row4.bullet_x+21,alien1row4.bullet_y);
+    shelter4.hit(alien2row4.bullet_x+21,alien2row4.bullet_y);
+    shelter4.hit(alien3row4.bullet_x+21,alien3row4.bullet_y);
+    shelter4.hit(alien4row4.bullet_x+21,alien4row4.bullet_y);
+    shelter4.hit(alien5row4.bullet_x+21,alien5row4.bullet_y);
+    shelter4.hit(alien6row4.bullet_x+21,alien6row4.bullet_y);
+    shelter4.hit(alien7row4.bullet_x+21,alien7row4.bullet_y);
+    shelter4.hit(alien8row4.bullet_x+21,alien8row4.bullet_y);
+    shelter4.hit(alien9row4.bullet_x+21,alien9row4.bullet_y);
+    shelter4.hit(alien10row4.bullet_x+21,alien10row4.bullet_y);
+
+    shelter4.hit(alien1row5.bullet_x+21,alien1row5.bullet_y);
+    shelter4.hit(alien2row5.bullet_x+21,alien2row5.bullet_y);
+    shelter4.hit(alien3row5.bullet_x+21,alien3row5.bullet_y);
+    shelter4.hit(alien4row5.bullet_x+21,alien4row5.bullet_y);
+    shelter4.hit(alien5row5.bullet_x+21,alien5row5.bullet_y);
+    shelter4.hit(alien6row5.bullet_x+21,alien6row5.bullet_y);
+    shelter4.hit(alien7row5.bullet_x+21,alien7row5.bullet_y);
+    shelter4.hit(alien8row5.bullet_x+21,alien8row5.bullet_y);
+    shelter4.hit(alien9row5.bullet_x+21,alien9row5.bullet_y);
+    shelter4.hit(alien10row5.bullet_x+21,alien10row5.bullet_y);
+
+    shelter4.hit(alien1row6.bullet_x+21,alien1row6.bullet_y);
+    shelter4.hit(alien2row6.bullet_x+21,alien2row6.bullet_y);
+    shelter4.hit(alien3row6.bullet_x+21,alien3row6.bullet_y);
+    shelter4.hit(alien4row6.bullet_x+21,alien4row6.bullet_y);
+    shelter4.hit(alien5row6.bullet_x+21,alien5row6.bullet_y);
+    shelter4.hit(alien6row6.bullet_x+21,alien6row6.bullet_y);
+    shelter4.hit(alien7row6.bullet_x+21,alien7row6.bullet_y);
+    shelter4.hit(alien8row6.bullet_x+21,alien8row6.bullet_y);
+    shelter4.hit(alien9row6.bullet_x+21,alien9row6.bullet_y);
+    shelter4.hit(alien10row6.bullet_x+21,alien10row6.bullet_y);
     shelter4.draw();
+
 }
 function draw_explotion(){
     alien1row1.explotion(xprime+(0*distance));
